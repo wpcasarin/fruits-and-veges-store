@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import propTypes from 'prop-types';
 import { AppBar, Container, Tab, Tabs, Toolbar } from '@mui/material';
 import CartIcon from '@mui/icons-material/ShoppingCart';
 import Logo from './shared/LogoLink';
@@ -71,5 +72,13 @@ function Header({ currentPage }) {
     </AppBar>
   );
 }
+
+Header.defaultProps = {
+  currentPage: 0,
+};
+
+Header.prototype = {
+  currentPage: propTypes.string,
+};
 
 export default Header;
