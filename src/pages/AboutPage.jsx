@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 import Header from '../components/Header';
 
-function About() {
+function AboutPage() {
   return (
     <>
       <Header currentPage={3} />
@@ -18,4 +18,4 @@ function About() {
   );
 }
 
-export default About;
+export default AboutPage;

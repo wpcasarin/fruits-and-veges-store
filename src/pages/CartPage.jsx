@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 import Header from '../components/Header';
 
-function Cart() {
+function CartPage() {
   return (
     <>
       <Header currentPage={5} />
@@ -18,4 +18,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default CartPage;

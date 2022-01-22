@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 import Header from '../components/Header';
 
-function Products() {
+function ProductsPage() {
   return (
     <>
       <Header currentPage={2} />
@@ -18,4 +18,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default ProductsPage;
