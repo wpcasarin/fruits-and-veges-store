@@ -19,7 +19,7 @@ function Header({ currentPage }) {
         component={'nav'}
       >
         <Box padding="20px" marginRight="auto">
-          <Typography variant="h6" noWrap component={NavLink} to="/">
+          <Typography variant="h6" component={NavLink} to="/">
             LOGO
           </Typography>
         </Box>
