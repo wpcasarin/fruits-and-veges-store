@@ -4,14 +4,8 @@ import Header from '../components/Header';
 function HomePage() {
   return (
     <>
-      <Header currentPage={1} />
+      <Header currentPage={0} />
       <Container>
-        <h1>HOME</h1>
-        <h1>HOME</h1>
-        <h1>HOME</h1>
-        <h1>HOME</h1>
-        <h1>HOME</h1>
-        <h1>HOME</h1>
         <h1>HOME</h1>
       </Container>
     </>

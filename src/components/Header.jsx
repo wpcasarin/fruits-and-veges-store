@@ -1,6 +1,14 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Box, Container, Tab, Tabs, Typography } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  Container,
+  Tab,
+  Tabs,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import CartIcon from '@mui/icons-material/ShoppingCart';
 import Logo from './shared/Logo';
 
@@ -12,41 +20,50 @@ function Header({ currentPage }) {
   };
 
   return (
-    <Container component={'header'}>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        textColor="inherit"
-        component={'nav'}
-      >
-        <Box
-          padding="20px"
-          marginRight="auto"
-          display="flex"
-          sx={{ textDecoration: 'none' }}
+    <AppBar position="static" sx={{ background: 'white' }}>
+      <Container>
+        <Toolbar
+          disableGutters
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
         >
-          <Logo />
-          <Typography
-            component={NavLink}
-            to="/"
-            paddingLeft=".5rem"
-            sx={{
-              textDecoration: 'none',
-              color: 'black',
-              fontWeight: 'bold',
-              fontSize: '1.3rem',
-            }}
+          <Box display="flex" sx={{ textDecoration: 'none', flexGrow: 1 }}>
+            <Logo />
+            <Typography
+              component={NavLink}
+              to="/"
+              sx={{
+                textDecoration: 'none',
+                color: 'black',
+                fontWeight: 'bold',
+                fontSize: '1.3rem',
+                paddingLeft: '0.5rem',
+              }}
+            >
+              FreshStuff
+            </Typography>
+          </Box>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            component={'nav'}
+            sx={{ marginLeft: 'auto', flexGrow: 1 }}
           >
-            FreshStuff
-          </Typography>
-        </Box>
-        <Tab label="Início" component={NavLink} to="/" />
-        <Tab label="Produtos" component={NavLink} to="/products" />
-        <Tab label="Sobre Nós" component={NavLink} to="/about" />
-        <Box padding="20px" marginLeft="auto"></Box>
-        <Tab icon={<CartIcon />} component={NavLink} to="/cart" />
-      </Tabs>
-    </Container>
+            <Tab label="Início" component={NavLink} to="/" />
+            <Tab label="Produtos" component={NavLink} to="/products" />
+            <Tab label="Sobre Nós" component={NavLink} to="/about" />
+            <Tab
+              icon={<CartIcon />}
+              component={NavLink}
+              to="/cart"
+              sx={{ marginLeft: 'auto' }}
+            />
+          </Tabs>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 

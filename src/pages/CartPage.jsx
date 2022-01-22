@@ -4,7 +4,7 @@ import Header from '../components/Header';
 function CartPage() {
   return (
     <>
-      <Header currentPage={5} />
+      <Header currentPage={3} />
       <Container>
         <h1>CART</h1>
         <h1>CART</h1>

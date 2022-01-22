@@ -4,7 +4,7 @@ import Header from '../components/Header';
 function AboutPage() {
   return (
     <>
-      <Header currentPage={3} />
+      <Header currentPage={2} />
       <Container>
         <h1>ABOUT</h1>
         <h1>ABOUT</h1>
