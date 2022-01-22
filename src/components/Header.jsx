@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { AppBar, Container, Tab, Tabs, Toolbar } from '@mui/material';
-import CartIcon from '@mui/icons-material/ShoppingCart';
+import CartIcon from './HeaderCart';
 import Logo from './shared/LogoLink';
 
 function Header({ currentPage }) {
