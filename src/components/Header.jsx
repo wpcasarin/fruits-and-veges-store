@@ -1,16 +1,8 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import {
-  AppBar,
-  Box,
-  Container,
-  Tab,
-  Tabs,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+import { AppBar, Container, Tab, Tabs, Toolbar } from '@mui/material';
 import CartIcon from '@mui/icons-material/ShoppingCart';
-import Logo from './shared/Logo';
+import Logo from './shared/LogoLink';
 
 function Header({ currentPage }) {
   const [value, setValue] = useState(currentPage);
@@ -57,22 +49,7 @@ function Header({ currentPage }) {
             alignItems: 'center',
           }}
         >
-          <Box display="flex" sx={{ textDecoration: 'none', flexGrow: 1 }}>
-            <Logo />
-            <Typography
-              component={NavLink}
-              to="/"
-              sx={{
-                textDecoration: 'none',
-                color: 'black',
-                fontWeight: 'bold',
-                fontSize: '1.3rem',
-                paddingLeft: '0.5rem',
-              }}
-            >
-              FreshStuff
-            </Typography>
-          </Box>
+          <Logo />
           <Tabs
             value={value}
             onChange={handleChange}
