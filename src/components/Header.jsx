@@ -15,17 +15,17 @@ function Header({ currentPage }) {
   const pages = [
     {
       id: 0,
-      name: 'Início',
+      name: 'Home',
       to: '/',
     },
     {
       id: 1,
-      name: 'Produtos',
+      name: 'Products',
       to: '/products',
     },
     {
       id: 2,
-      name: 'Sobre Nós',
+      name: 'About',
       to: '/about',
     },
     {
