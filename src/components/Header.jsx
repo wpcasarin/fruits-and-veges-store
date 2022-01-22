@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Box, Container, Tab, Tabs, Typography } from '@mui/material';
 import CartIcon from '@mui/icons-material/ShoppingCart';
+import Logo from './shared/Logo';
 
 function Header({ currentPage }) {
   const [value, setValue] = useState(currentPage);
@@ -18,9 +19,25 @@ function Header({ currentPage }) {
         textColor="inherit"
         component={'nav'}
       >
-        <Box padding="20px" marginRight="auto">
-          <Typography variant="h6" component={NavLink} to="/">
-            LOGO
+        <Box
+          padding="20px"
+          marginRight="auto"
+          display="flex"
+          sx={{ textDecoration: 'none' }}
+        >
+          <Logo />
+          <Typography
+            component={NavLink}
+            to="/"
+            paddingLeft=".5rem"
+            sx={{
+              textDecoration: 'none',
+              color: 'black',
+              fontWeight: 'bold',
+              fontSize: '1.3rem',
+            }}
+          >
+            FreshStuff
           </Typography>
         </Box>
         <Tab label="Início" component={NavLink} to="/" />
