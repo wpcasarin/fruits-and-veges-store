@@ -21,7 +21,7 @@ export default function Item({
   nutritions,
   itemId,
 }) {
-  const { addItemToCart } = useContext(GlobalContext);
+  const { addItemToCart, haveItem } = useContext(GlobalContext);
 
   // Card components
   const LeftTitle = styled('p')(({ theme }) => ({
@@ -120,17 +120,31 @@ export default function Item({
             </Box>
           </Popover>
         </div>
-        <Button
-          onClick={() => {
-            addItemToCart(itemId);
-          }}
-          variant="contained"
-          size="small"
-          endIcon={<AddShoppingCartIcon />}
-          disableElevation
-        >
-          Add to Cart
-        </Button>
+        {haveItem(itemId) ? (
+          <Button
+            onClick={() => {
+              addItemToCart(itemId);
+            }}
+            variant="contained"
+            size="small"
+            endIcon={<AddShoppingCartIcon />}
+            disabled
+          >
+            Add to Cart
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              addItemToCart(itemId);
+            }}
+            variant="contained"
+            size="small"
+            endIcon={<AddShoppingCartIcon />}
+            disableElevation
+          >
+            Add to Cart
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

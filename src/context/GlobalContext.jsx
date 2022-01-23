@@ -10,6 +10,15 @@ export const GlobalProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalQuantity, setTotalQuantity] = useState(0);
   // Functions
+  const haveItem = (id) => {
+    const item = itemsData.filter((item) => item.id === id);
+    if (cartItems.includes(...item)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const updateTotalItems = () => {
     const sum = cartItems.length;
     setTotalItems(sum);
@@ -20,7 +29,6 @@ export const GlobalProvider = ({ children }) => {
     setTotalQuantity(sum);
   };
 
-  //TODO needs state update
   const itemQuantity = (id) => {
     const newItem = itemsData.filter((item) => item.id === id);
     return newItem[0].count;
@@ -90,6 +98,7 @@ export const GlobalProvider = ({ children }) => {
         itemQuantity,
         clearCart,
         updateTotalQuantity,
+        haveItem,
       }}
     >
       {children}
