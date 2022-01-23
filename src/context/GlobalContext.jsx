@@ -25,6 +25,17 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const rmItemFromCart = (id) => {
+    const newItem = itemsData.filter((item) => item.id === id);
+
+    if (cartItems.includes(...newItem) && newItem[0].count > 0) {
+      newItem[0].count--;
+    } else if (newItem[0].count === 0) {
+      const newArr = cartItems.filter((item) => item.count !== 0);
+      setCartItems(newArr);
+    }
+  };
+
   const fetchData = async () => {
     const response = await fetch(`${url}`);
     const data = await response.json();
@@ -47,6 +58,7 @@ export const GlobalProvider = ({ children }) => {
         itemsData,
         cartItems,
         addItemToCart,
+        rmItemFromCart,
       }}
     >
       {children}
