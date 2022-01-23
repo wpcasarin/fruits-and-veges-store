@@ -21,6 +21,7 @@ function ProductsPage() {
                 genus={item.genus}
                 family={item.family}
                 order={item.order}
+                nutritions={item.nutritions}
               />
             </Grid>
           ))}
