@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from 'react';
 
 const GlobalContext = createContext();
 const url = 'https://www.fruityvice.com/api/fruit/all';
+
 export const GlobalProvider = ({ children }) => {
   // States
   const [totalItems, setTotalItems] = useState(0);

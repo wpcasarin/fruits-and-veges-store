@@ -6,6 +6,7 @@ import GlobalContext from '../context/GlobalContext';
 
 function ProductsPage() {
   const { itemsData } = useContext(GlobalContext);
+
   return (
     <>
       <Header currentPage={1} />
@@ -14,8 +15,8 @@ function ProductsPage() {
           Fresh products for you and your family
         </Typography>
         <Grid container spacing={2}>
-          {itemsData.map((item) => (
-            <Grid item xs={6} md={4}>
+          {itemsData.map((item, index) => (
+            <Grid key={index} item xs={6} md={4}>
               <Item
                 name={item.name}
                 genus={item.genus}
