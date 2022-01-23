@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   Button,
   Card,
@@ -6,8 +7,9 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
-
+import GlobalContext from '../context/GlobalContext';
 export default function Item() {
+  const { updateTotalItems } = useContext(GlobalContext);
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -32,7 +34,13 @@ export default function Item() {
       </CardContent>
       <CardActions>
         <Button size="small">Info</Button>
-        <Button variant="contained" size="small">
+        <Button
+          onClick={() => {
+            updateTotalItems();
+          }}
+          variant="contained"
+          size="small"
+        >
           Add to cart
         </Button>
       </CardActions>
