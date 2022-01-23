@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-
+import backup from '../data/backupData';
 const GlobalContext = createContext();
 const url = 'https://www.fruityvice.com/api/fruit/all';
 
@@ -68,11 +68,16 @@ export const GlobalProvider = ({ children }) => {
     setCartItems([]);
     updateTotalQuantity();
   };
-
+  // API don't allow CORS using a backup data to keep things working
   const fetchData = async () => {
-    const response = await fetch(`${url}`);
-    const data = await response.json();
-    setItemsData(data);
+    try {
+      const response = await fetch(`${url}`);
+      const data = await response.json();
+      setItemsData(data);
+    } catch (err) {
+      alert(err);
+      setItemsData(backup);
+    }
   };
 
   // Use Effect
