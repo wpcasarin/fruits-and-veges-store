@@ -73,7 +73,7 @@ export default function Item({
       <CardActions>
         <div>
           <Button aria-describedby={id} size="small" onClick={handleClick}>
-            Info
+            Nutrition
           </Button>
           <Popover
             id={id}
