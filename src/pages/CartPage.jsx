@@ -1,7 +1,9 @@
-import { useContext, useEffect } from 'react';
-import { Button, ButtonGroup, Container } from '@mui/material';
+import { useContext } from 'react';
+import { Button, ButtonGroup, Container, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { DataGrid } from '@mui/x-data-grid';
 import Header from '../components/Header';
 import GlobalContext from '../context/GlobalContext';
@@ -13,6 +15,7 @@ function CartPage() {
     addItemToCart,
     rmItemFromCart,
     deleteItemFromCart,
+    clearCart,
   } = useContext(GlobalContext);
 
   const columns = [
@@ -54,8 +57,9 @@ function CartPage() {
             onClick={() => {
               deleteItemFromCart(item.id);
             }}
+            endIcon={<DeleteOutlineIcon />}
           >
-            Remove
+            Delete
           </Button>
         );
       },
@@ -65,7 +69,40 @@ function CartPage() {
     <>
       <Header currentPage={3} />
       <Container>
-        <div style={{ height: 800, width: '100%' }}>
+        <div
+          style={{ display: 'flex', alignItems: 'center', marginBlock: '2rem' }}
+        >
+          <ShoppingBasketIcon fontSize="large" color="primary" />
+          <Typography
+            variant="h4"
+            component="h2"
+            fontWeight="bold"
+            sx={{ marginInlineStart: '10px' }}
+          >
+            Products
+          </Typography>
+          <Typography
+            variant="h4"
+            component="span"
+            fontWeight="bold"
+            sx={{
+              marginInlineStart: 'auto',
+            }}
+          >
+            total
+          </Typography>
+          <Button
+            variant="outlined"
+            color="error"
+            endIcon={<DeleteOutlineIcon />}
+            onClick={() => {
+              clearCart();
+            }}
+          >
+            Clear Cart
+          </Button>
+        </div>
+        <div style={{ height: 400, width: '100%' }}>
           <DataGrid rows={cartItems} columns={columns} />
         </div>
       </Container>

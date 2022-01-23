@@ -48,6 +48,10 @@ export const GlobalProvider = ({ children }) => {
     setCartItems(newArr);
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   const fetchData = async () => {
     const response = await fetch(`${url}`);
     const data = await response.json();
@@ -73,6 +77,7 @@ export const GlobalProvider = ({ children }) => {
         rmItemFromCart,
         deleteItemFromCart,
         itemQuantity,
+        clearCart,
       }}
     >
       {children}
