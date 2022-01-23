@@ -12,6 +12,7 @@ import {
 import { styled } from '@mui/system';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import GlobalContext from '../context/GlobalContext';
+import img from '../assets/card_img.jpg';
 
 export default function Item({
   name,
@@ -50,12 +51,7 @@ export default function Item({
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image="/src/assets/card_img.jpg"
-        alt="food"
-      />
+      <CardMedia component="img" height="140" image={img} alt="food" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
