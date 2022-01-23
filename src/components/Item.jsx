@@ -38,10 +38,10 @@ export default function Item({ name, genus, order, family }) {
           {name}
         </Typography>
         <LeftTitle>
-          Genus: <RightText>{genus}</RightText>
+          Order: <RightText>{order}</RightText>
         </LeftTitle>
         <LeftTitle>
-          Order: <RightText>{order}</RightText>
+          Genus: <RightText>{genus}</RightText>
         </LeftTitle>
         <LeftTitle>
           Family: <RightText>{family}</RightText>
