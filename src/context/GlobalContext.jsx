@@ -8,19 +8,8 @@ export const GlobalProvider = ({ children }) => {
   const [totalItems, setTotalItems] = useState(0);
   const [itemsData, setItemsData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [countedCartItems, setCountedCartItems] = useState([]);
-  // Functions
 
-  const countItems = (data) => {
-    const reduce = Object.values(
-      data.reduce((item, { id }) => {
-        item[id] = item[id] || { id, count: 0 };
-        item[id].count++;
-        return item;
-      }, Object.create(null)),
-    );
-    setCountedCartItems(reduce);
-  };
+  // Functions
 
   const addTotalItems = () => {
     setTotalItems(totalItems + 1);
@@ -31,7 +20,13 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const addItemToCart = (id) => {
-    setCartItems([...cartItems, ...itemsData.filter((item) => item.id === id)]);
+    const newItem = itemsData.filter((item) => item.id === id);
+    if (!cartItems.includes(...newItem)) {
+      newItem[0].count = 1;
+      setCartItems([...cartItems, ...newItem]);
+    } else {
+      newItem[0].count++;
+    }
   };
 
   const fetchData = async () => {
@@ -45,21 +40,15 @@ export const GlobalProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    countItems(cartItems);
-  }, [cartItems]);
-
   return (
     <GlobalContext.Provider
       value={{
         totalItems,
         itemsData,
         cartItems,
-        countedCartItems,
         addTotalItems,
         rmTotalItems,
         addItemToCart,
-        countItems,
       }}
     >
       {children}
