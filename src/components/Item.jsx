@@ -13,8 +13,15 @@ import { styled } from '@mui/system';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import GlobalContext from '../context/GlobalContext';
 
-export default function Item({ name, genus, order, family, nutritions }) {
-  const { updateTotalItems } = useContext(GlobalContext);
+export default function Item({
+  name,
+  genus,
+  order,
+  family,
+  nutritions,
+  itemId,
+}) {
+  const { addTotalItems, addItemToCart } = useContext(GlobalContext);
 
   // Card components
   const LeftTitle = styled('p')(({ theme }) => ({
@@ -115,7 +122,8 @@ export default function Item({ name, genus, order, family, nutritions }) {
         </div>
         <Button
           onClick={() => {
-            updateTotalItems();
+            addTotalItems();
+            addItemToCart(itemId);
           }}
           variant="contained"
           size="small"

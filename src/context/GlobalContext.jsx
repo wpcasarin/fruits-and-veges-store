@@ -7,10 +7,19 @@ export const GlobalProvider = ({ children }) => {
   // States
   const [totalItems, setTotalItems] = useState(0);
   const [itemsData, setItemsData] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   // Functions
-  const updateTotalItems = () => {
+  const addTotalItems = () => {
     setTotalItems(totalItems + 1);
+  };
+
+  const rmTotalItems = () => {
+    setTotalItems(totalItems - 1);
+  };
+
+  const addItemToCart = (id) => {
+    setCartItems([...cartItems, itemsData.filter((item) => item.id === id)]);
   };
 
   const fetchData = async () => {
@@ -25,7 +34,15 @@ export const GlobalProvider = ({ children }) => {
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ totalItems, updateTotalItems, itemsData }}>
+    <GlobalContext.Provider
+      value={{
+        totalItems,
+        itemsData,
+        addTotalItems,
+        rmTotalItems,
+        addItemToCart,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );

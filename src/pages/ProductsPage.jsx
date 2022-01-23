@@ -23,6 +23,7 @@ function ProductsPage() {
                 family={item.family}
                 order={item.order}
                 nutritions={item.nutritions}
+                itemId={item.id}
               />
             </Grid>
           ))}
