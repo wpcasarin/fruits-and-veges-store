@@ -49,9 +49,9 @@ function HomePage() {
               fontSize: '1.5rem',
             }}
             to="/products"
+            endIcon={<ArrowForwardIcon />}
           >
             Explore
-            <ArrowForwardIcon />
           </Button>
         </Box>
       </Container>

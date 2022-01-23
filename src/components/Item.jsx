@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { styled } from '@mui/system';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import GlobalContext from '../context/GlobalContext';
 
 export default function Item({ name, genus, order, family }) {
@@ -55,8 +56,10 @@ export default function Item({ name, genus, order, family }) {
           }}
           variant="contained"
           size="small"
+          endIcon={<AddShoppingCartIcon />}
+          disableElevation
         >
-          Add to cart
+          Add to Cart
         </Button>
       </CardActions>
     </Card>
