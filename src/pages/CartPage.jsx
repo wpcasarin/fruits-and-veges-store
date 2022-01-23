@@ -27,18 +27,19 @@ function CartPage() {
           <ButtonGroup disableElevation variant="contained">
             <Button
               onClick={() => {
-                addItemToCart(item.id);
-              }}
-            >
-              <AddIcon />
-            </Button>
-            <Button>{`${itemQuantity(item.id)}`}</Button>
-            <Button
-              onClick={() => {
                 rmItemFromCart(item.id);
               }}
             >
               <RemoveIcon />
+            </Button>
+
+            <Button>{`${itemQuantity(item.id)}`}</Button>
+            <Button
+              onClick={() => {
+                addItemToCart(item.id);
+              }}
+            >
+              <AddIcon />
             </Button>
           </ButtonGroup>
         );
