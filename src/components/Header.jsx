@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { AppBar, Container, Tab, Tabs, Toolbar } from '@mui/material';
 import CartIcon from './HeaderCart';
@@ -62,7 +62,7 @@ function Header({ currentPage }) {
                 key={index}
                 label={page.name}
                 icon={page.icon}
-                component={NavLink}
+                component={Link}
                 to={page.to}
               />
             ))}
