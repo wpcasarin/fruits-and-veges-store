@@ -8,11 +8,16 @@ export const GlobalProvider = ({ children }) => {
   const [totalItems, setTotalItems] = useState(0);
   const [itemsData, setItemsData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-
+  const [totalQuantity, setTotalQuantity] = useState(0);
   // Functions
   const updateTotalItems = () => {
     const sum = cartItems.length;
     setTotalItems(sum);
+  };
+
+  const updateTotalQuantity = () => {
+    const sum = cartItems.reduce((prev, curr) => prev + curr.count, 0);
+    setTotalQuantity(sum);
   };
 
   //TODO needs state update
@@ -29,6 +34,7 @@ export const GlobalProvider = ({ children }) => {
     } else {
       newItem[0].count++;
     }
+    updateTotalQuantity();
   };
 
   const rmItemFromCart = (id) => {
@@ -40,16 +46,19 @@ export const GlobalProvider = ({ children }) => {
       const newArr = cartItems.filter((item) => item.count !== 1);
       setCartItems(newArr);
     }
+    updateTotalQuantity();
   };
 
   const deleteItemFromCart = (id) => {
     const toDelete = itemsData.filter((item) => item.id === id);
     const newArr = cartItems.filter((item) => item.id !== toDelete[0].id);
     setCartItems(newArr);
+    updateTotalQuantity();
   };
 
   const clearCart = () => {
     setCartItems([]);
+    updateTotalQuantity();
   };
 
   const fetchData = async () => {
@@ -65,12 +74,14 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     updateTotalItems();
+    updateTotalQuantity();
   }, [cartItems]);
 
   return (
     <GlobalContext.Provider
       value={{
         totalItems,
+        totalQuantity,
         itemsData,
         cartItems,
         addItemToCart,
@@ -78,6 +89,7 @@ export const GlobalProvider = ({ children }) => {
         deleteItemFromCart,
         itemQuantity,
         clearCart,
+        updateTotalQuantity,
       }}
     >
       {children}
