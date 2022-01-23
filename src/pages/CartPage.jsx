@@ -31,12 +31,7 @@ function CartPage() {
     <>
       <Button
         onClick={() => {
-          let mergedSubjects = cartItems.map((subject) => {
-            let otherSubject = cartItems.find(
-              (element) => element.id === subject.id,
-            );
-            console.log([{ ...subject, ...otherSubject }]);
-          });
+          console.log();
         }}
       >
         CLIQUEEEE

@@ -21,7 +21,7 @@ export default function Item({
   nutritions,
   itemId,
 }) {
-  const { addTotalItems, addItemToCart } = useContext(GlobalContext);
+  const { addItemToCart } = useContext(GlobalContext);
 
   // Card components
   const LeftTitle = styled('p')(({ theme }) => ({
@@ -122,7 +122,6 @@ export default function Item({
         </div>
         <Button
           onClick={() => {
-            addTotalItems();
             addItemToCart(itemId);
           }}
           variant="contained"

@@ -10,13 +10,9 @@ export const GlobalProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   // Functions
-
-  const addTotalItems = () => {
-    setTotalItems(totalItems + 1);
-  };
-
-  const rmTotalItems = () => {
-    setTotalItems(totalItems - 1);
+  const updateTotalItems = () => {
+    const sum = cartItems.length;
+    setTotalItems(sum);
   };
 
   const addItemToCart = (id) => {
@@ -40,14 +36,16 @@ export const GlobalProvider = ({ children }) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    updateTotalItems();
+  }, [cartItems]);
+
   return (
     <GlobalContext.Provider
       value={{
         totalItems,
         itemsData,
         cartItems,
-        addTotalItems,
-        rmTotalItems,
         addItemToCart,
       }}
     >
