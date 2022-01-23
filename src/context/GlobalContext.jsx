@@ -15,6 +15,12 @@ export const GlobalProvider = ({ children }) => {
     setTotalItems(sum);
   };
 
+  //TODO needs state update
+  const itemQuantity = (id) => {
+    const newItem = itemsData.filter((item) => item.id === id);
+    return newItem[0].count;
+  };
+
   const addItemToCart = (id) => {
     const newItem = itemsData.filter((item) => item.id === id);
     if (!cartItems.includes(...newItem)) {
@@ -28,12 +34,18 @@ export const GlobalProvider = ({ children }) => {
   const rmItemFromCart = (id) => {
     const newItem = itemsData.filter((item) => item.id === id);
 
-    if (cartItems.includes(...newItem) && newItem[0].count > 0) {
+    if (cartItems.includes(...newItem) && newItem[0].count > 1) {
       newItem[0].count--;
-    } else if (newItem[0].count === 0) {
-      const newArr = cartItems.filter((item) => item.count !== 0);
+    } else if (newItem[0].count === 1) {
+      const newArr = cartItems.filter((item) => item.count !== 1);
       setCartItems(newArr);
     }
+  };
+
+  const deleteItemFromCart = (id) => {
+    const toDelete = itemsData.filter((item) => item.id === id);
+    const newArr = cartItems.filter((item) => item.id !== toDelete[0].id);
+    setCartItems(newArr);
   };
 
   const fetchData = async () => {
@@ -59,6 +71,8 @@ export const GlobalProvider = ({ children }) => {
         cartItems,
         addItemToCart,
         rmItemFromCart,
+        deleteItemFromCart,
+        itemQuantity,
       }}
     >
       {children}
