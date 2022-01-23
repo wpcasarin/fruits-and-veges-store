@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Container, Grid, Typography } from '@mui/material';
 import Header from '../components/Header';
+import ProductsHeader from '../components/ProductsHeader';
 import Item from '../components/Item';
 import GlobalContext from '../context/GlobalContext';
 
@@ -11,9 +12,7 @@ function ProductsPage() {
     <>
       <Header currentPage={1} />
       <Container>
-        <Typography variant="h4" component="h2" sx={{ marginBlock: '2rem' }}>
-          Fresh products for you and your family
-        </Typography>
+        <ProductsHeader />
         <Grid container spacing={2}>
           {itemsData.map((item, index) => (
             <Grid key={index} item xs={6} md={4}>
