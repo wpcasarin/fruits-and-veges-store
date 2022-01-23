@@ -16,6 +16,7 @@ import GlobalContext from '../context/GlobalContext';
 export default function Item({ name, genus, order, family, nutritions }) {
   const { updateTotalItems } = useContext(GlobalContext);
 
+  // Card components
   const LeftTitle = styled('p')(({ theme }) => ({
     color: 'black',
     fontFamily: theme.typography.fontFamily,

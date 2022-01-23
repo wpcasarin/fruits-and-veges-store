@@ -2,11 +2,9 @@
   "name": "fruits-and-veges-store",
   "version": "0.0.0",
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "server": "json-server --watch db.json --port 5000",
-    "dev": "concurrently \"npm run server\" \"npm run start\""
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
