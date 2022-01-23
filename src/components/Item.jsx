@@ -7,30 +7,45 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material';
+import { styled } from '@mui/system';
 import GlobalContext from '../context/GlobalContext';
-export default function Item() {
+
+export default function Item({ name, genus, order, family }) {
   const { updateTotalItems } = useContext(GlobalContext);
+
+  const LeftTitle = styled('p')(({ theme }) => ({
+    color: 'black',
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: '500',
+    margin: '0',
+  }));
+  const RightText = styled('span')(({ theme }) => ({
+    color: theme.palette.primary.dark,
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: '400',
+  }));
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
         image="/src/assets/card_img.jpg"
-        alt="green iguana"
+        alt="food"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {'Name'}
+          {name}
         </Typography>
-        <Typography variant="subtitle2" color="text.secondary">
-          Genus:{' '}
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary">
-          Family:{' '}
-        </Typography>
-        <Typography variant="subtitle2" color="text.secondary">
-          Order:{' '}
-        </Typography>
+        <LeftTitle>
+          Genus: <RightText>{genus}</RightText>
+        </LeftTitle>
+        <LeftTitle>
+          Order: <RightText>{order}</RightText>
+        </LeftTitle>
+        <LeftTitle>
+          Family: <RightText>{family}</RightText>
+        </LeftTitle>
       </CardContent>
       <CardActions>
         <Button size="small">Info</Button>
