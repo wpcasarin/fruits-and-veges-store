@@ -68,7 +68,12 @@ export default function Item({
       </CardContent>
       <CardActions>
         <div>
-          <Button aria-describedby={id} size="small" onClick={handleClick}>
+          <Button
+            aria-describedby={id}
+            size="small"
+            onClick={handleClick}
+            sx={{ marginInlineEnd: '.9rem' }}
+          >
             Nutrition
           </Button>
           <Popover
