@@ -9,6 +9,8 @@ export const GlobalProvider = ({ children }) => {
   const [itemsData, setItemsData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const [fetchSuccess, setFetchSuccess] = useState(true);
+
   // Functions
   const haveItem = (id) => {
     const item = itemsData.filter((item) => item.id === id);
@@ -75,7 +77,7 @@ export const GlobalProvider = ({ children }) => {
       const data = await response.json();
       setItemsData(data);
     } catch (err) {
-      alert(err);
+      setFetchSuccess(false);
       setItemsData(backup);
     }
   };
@@ -97,6 +99,7 @@ export const GlobalProvider = ({ children }) => {
         totalQuantity,
         itemsData,
         cartItems,
+        fetchSuccess,
         addItemToCart,
         rmItemFromCart,
         deleteItemFromCart,

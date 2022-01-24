@@ -4,12 +4,14 @@ import Header from '../components/Header';
 import ProductsHeader from '../components/ProductsHeader';
 import Item from '../components/Item';
 import GlobalContext from '../context/GlobalContext';
+import Alert from '../components/Alert';
 
 function ProductsPage() {
-  const { itemsData } = useContext(GlobalContext);
+  const { itemsData, fetchSuccess } = useContext(GlobalContext);
 
   return (
     <>
+      {fetchSuccess || <Alert />}
       <Header currentPage={1} />
       <Container>
         <ProductsHeader />
