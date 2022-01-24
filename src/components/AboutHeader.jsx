@@ -1,18 +1,17 @@
 import { Typography } from '@mui/material';
-import StoreIcon from '@mui/icons-material/Store';
-import GlobalContext from '../context/GlobalContext';
+import InfoIcon from '@mui/icons-material/Info';
 
 function CartHeader() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', marginBlock: '2rem' }}>
-      <StoreIcon fontSize="large" color="primary" />
+      <InfoIcon fontSize="large" color="primary" />
       <Typography
         variant="h4"
         component="h2"
         fontWeight="bold"
         sx={{ marginInlineStart: '10px' }}
       >
-        Our Store
+        About Us
       </Typography>
     </div>
   );
