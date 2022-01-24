@@ -89,17 +89,33 @@ function CartPage() {
         <div style={{ height: 650, width: '100%' }}>
           <DataGrid rows={cartItems} columns={columns} />
         </div>
-        <Button
-          onClick={handleOpen}
-          size="large"
-          variant="contained"
-          endIcon={<CheckIcon />}
-          sx={{
-            marginTop: '2rem',
-          }}
-        >
-          Purchase
-        </Button>
+        {cartItems.length ? (
+          <Button
+            onClick={handleOpen}
+            size="large"
+            variant="contained"
+            endIcon={<CheckIcon />}
+            sx={{
+              marginTop: '2rem',
+            }}
+          >
+            Purchase
+          </Button>
+        ) : (
+          <Button
+            onClick={handleOpen}
+            size="large"
+            variant="contained"
+            endIcon={<CheckIcon />}
+            sx={{
+              marginTop: '2rem',
+            }}
+            disabled
+          >
+            Purchase
+          </Button>
+        )}
+
         <Modal
           open={open}
           onClose={handleClose}
