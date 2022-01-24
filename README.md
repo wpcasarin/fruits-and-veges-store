@@ -1,14 +1,15 @@
 # fruits-and-veges-store
 
-## Table of Contents
-
-- [About](#about)
-- [Getting Started](#getting_started)
-
-## About <a name = "about"></a>
+## About
 
 Simple store app, build with React and Material UI.
 
-## Getting Started <a name = "getting_started"></a>
+## Live preview
 
 ### https://hardcore-hypatia-3d9cae.netlify.app/
+
+## TODO
+
+- Make the code dry
+- Add more functionalities
+- Fix a lot of bugs

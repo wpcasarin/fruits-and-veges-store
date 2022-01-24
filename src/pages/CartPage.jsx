@@ -1,8 +1,16 @@
-import { useContext } from 'react';
-import { Button, ButtonGroup, Container } from '@mui/material';
+import { useContext, useState } from 'react';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Container,
+  Modal,
+  Typography,
+} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import CheckIcon from '@mui/icons-material/Check';
 import { DataGrid } from '@mui/x-data-grid';
 import Header from '../components/Header';
 import CartHeader from '../components/CartHeader';
@@ -15,7 +23,15 @@ function CartPage() {
     addItemToCart,
     rmItemFromCart,
     deleteItemFromCart,
+    clearCart,
   } = useContext(GlobalContext);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+    clearCart();
+  };
+  const handleClose = () => setOpen(false);
 
   const columns = [
     { field: 'name', headerName: 'Product', width: 150 },
@@ -70,9 +86,47 @@ function CartPage() {
       <Header currentPage={3} />
       <Container>
         <CartHeader />
-        <div style={{ height: 700, width: '100%' }}>
+        <div style={{ height: 650, width: '100%' }}>
           <DataGrid rows={cartItems} columns={columns} />
         </div>
+        <Button
+          onClick={handleOpen}
+          size="large"
+          variant="contained"
+          endIcon={<CheckIcon />}
+          sx={{
+            marginTop: '2rem',
+          }}
+        >
+          Purchase
+        </Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: 400,
+              bgcolor: 'white',
+              border: '2px solid #000',
+              boxShadow: 24,
+              p: 4,
+            }}
+          >
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Congratulations
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Your products are on the way.
+            </Typography>
+          </Box>
+        </Modal>
       </Container>
     </>
   );
