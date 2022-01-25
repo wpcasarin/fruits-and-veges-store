@@ -53,8 +53,7 @@ export const GlobalProvider = ({ children }) => {
     if (cartItems.includes(...newItem) && newItem[0].count > 1) {
       newItem[0].count--;
     } else if (newItem[0].count === 1) {
-      const newArr = cartItems.filter((item) => item.count !== 1);
-      setCartItems(newArr);
+      deleteItemFromCart(id);
     }
     updateTotalQuantity();
   };
